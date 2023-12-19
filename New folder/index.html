@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Booking System</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 1em;
+      text-align: center;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    section {
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    input, select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 10px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    /* Responsive styles */
+    @media only screen and (max-width: 600px) {
+      form {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Travel Booking System</h1>
+  </header>
+
+  <main>
+    <section id="flightBooking">
+      <h2>Flight Booking</h2>
+      <form id="flightBookingForm">
+        <form id="bookingForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+      
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+      
+            <label for="origin">Origin:</label>
+            <input type="text" id="origin" required>
+      
+            <label for="destination">Destination:</label>
+            <input type="text" id="destination" required>
+      
+            <label for="departureDate">Departure Date:</label>
+            <input type="date" id="departureDate" required>
+      
+            <label for="returnDate">Return Date:</label>
+            <input type="date" id="returnDate">
+      
+            <button type="button" onclick="submitBooking()">Submit Booking</button>
+          </form>
+      
+          <div id="confirmationMessage" style="display: none; margin-top: 20px;">
+            <h2>Booking Confirmed!</h2>
+            <p>Thank you for choosing our airline. Your booking details are as follows:</p>
+            <ul id="bookingDetails"></ul>
+          </div>
+
+        <button type="button" onclick="submitFlightBooking()">Book Flight</button>
+      </form>
+    </section>
+
+    <section id="hotelReservation">
+      <h2>Hotel Reservation</h2>
+      <form id="hotelReservationForm">
+        <!-- Hotel reservation form fields -->
+        <!-- ... -->
+
+        <button type="button" onclick="submitHotelReservation()">Book Hotel</button>
+      </form>
+    </section>
+
+    <section id="confirmationMessage" style="display: none; margin-top: 20px;">
+      <h2>Booking Confirmed!</h2>
+      <h3>Flight Details</h3>
+      <ul id="flightDetails"></ul>
+
+      <h3>Hotel Details</h3>
+      <ul id="hotelDetails"></ul>
+    </section>
+  </main>
+
+  <script>
+    function submitFlightBooking() {
+      // Retrieve and process flight booking details
+      const flightDetails = {
+        // Extract flight booking details from the form
+        // ...
+      };
+
+      // Display flight booking details
+      displayBookingDetails('flightDetails', flightDetails);
+    }
+
+    function submitHotelReservation() {
+      // Retrieve and process hotel reservation details
+      const hotelDetails = {
+        // Extract hotel reservation details from the form
+        // ...
+      };
+
+      // Display hotel reservation details
+      displayBookingDetails('hotelDetails', hotelDetails);
+    }
+
+    function displayBookingDetails(containerId, details) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = '';
+
+      for (const [key, value] of Object.entries(details)) {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `<strong>${key}:</strong> ${value}`;
+        container.appendChild(listItem);
+      }
+
+      document.getElementById('confirmationMessage').style.display = 'block';
+      document.getElementById('flightBooking').style.display = 'none';
+      document.getElementById('hotelReservation').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
